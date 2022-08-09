@@ -4,7 +4,6 @@ import Sidebar from "../../components/sidebar";
 import Navbar from "../../components/navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { createUser } from "../../api/userAPI";
-import { useNavigate } from "react-router-dom";
 import "./style.scss";
 
 const NewUser = () => {
@@ -16,7 +15,6 @@ const NewUser = () => {
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const nagative = useNavigate();
 
     const handleCreateUser = async (e) => {
         e.preventDefault();
@@ -32,7 +30,7 @@ const NewUser = () => {
 
         try {
             await createUser(formData);
-            nagative("users");
+            console.log("success");
         } catch (err) {
             console.log(err);
         }

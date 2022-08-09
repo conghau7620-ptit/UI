@@ -13,14 +13,15 @@ export const getUser = async (id, token) => {
     return response;
 };
 
-export const getAllUser = async () => {
-    const url = "/user/customer?page=1";
+export const getAllUser = async (params) => {
+    const url = "/user/customer";
     const response = await axiosClient({
         medthod: "get",
         url: url,
         headers: {
             Authorization: `Bearer ${JSON.parse(getItem("TOKEN")).token}`,
         },
+        params: params,
     });
     return response;
 };
@@ -39,7 +40,6 @@ export const createUser = async (data) => {
     const url = "/user";
     const response = await axiosClient.post(url, data, {
         headers: {
-            Accept: "multipart/form-data",
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${JSON.parse(getItem("TOKEN")).token}`,
         },
