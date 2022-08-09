@@ -13,6 +13,8 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { productInputs } from "./formSource";
 import "./style/dark.scss";
 import Product from "./pages/products";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     const { darkMode } = useContext(DarkModeContext);
@@ -20,6 +22,7 @@ function App() {
     return (
         <div className={darkMode ? "app dark" : "app"}>
             <BrowserRouter>
+                <ToastContainer />
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/">

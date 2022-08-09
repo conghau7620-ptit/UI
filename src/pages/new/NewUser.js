@@ -4,6 +4,7 @@ import Sidebar from "../../components/sidebar";
 import Navbar from "../../components/navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { createUser } from "../../api/userAPI";
+import { toast } from "react-toastify";
 import "./style.scss";
 
 const NewUser = () => {
@@ -30,9 +31,17 @@ const NewUser = () => {
 
         try {
             await createUser(formData);
-            console.log("success");
+            toast.success("Create Successfully");
+            setFile("");
+            setUsername("");
+            setPassword("");
+            setRoleId("");
+            setName("");
+            setAddress("");
+            setEmail("");
+            setPhone("");
         } catch (err) {
-            console.log(err);
+            toast.error("Error");
         }
     };
 
