@@ -8,13 +8,12 @@ import "./style.scss";
 
 const Datatable = () => {
     const [data, setData] = useState([]);
-    const [page, setPage] = useState(1);
 
     const handleUnActive = async (id) => {
         const user = data.find((user) => user.id === id);
         delete user["imageUrl"];
         await updateUser({ ...user, active: false });
-        const response = await getAllUser({ page: page });
+        const response = await getAllUser();
         setData(response.data.userResponses);
     };
 
@@ -22,13 +21,13 @@ const Datatable = () => {
         const user = data.find((user) => user.id === id);
         delete user["imageUrl"];
         await updateUser({ ...user, active: true });
-        const response = await getAllUser({ page: page });
+        const response = await getAllUser();
         setData(response.data.userResponses);
     };
 
     useEffect(() => {
         const getAllUserData = async () => {
-            const response = await getAllUser({ page: page });
+            const response = await getAllUser();
             console.log(response.data);
             setData(response.data.userResponses);
         };
@@ -84,7 +83,6 @@ const Datatable = () => {
                 pageSize={10}
                 pagination
                 rowsPerPageOptions={[10]}
-                checkboxSelection
             />
         </div>
     );

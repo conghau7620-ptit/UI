@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
             if (token) {
                 const { id } = jwtdecode(token);
                 const response = await getUser(id, token);
+                console.log(response.data);
                 setAuth(response.data);
                 setIsLoading(false);
             } else {

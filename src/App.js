@@ -8,6 +8,8 @@ import Single from "./pages/single";
 import New from "./pages/new";
 import NewUser from "./pages/new/NewUser";
 import AuthorizeRoute from "./authorizeRoute";
+import Type from "./pages/type";
+import Brand from "./pages/brand";
 import { DarkModeContext } from "./context/darkModeContext";
 
 import { productInputs } from "./formSource";
@@ -89,6 +91,24 @@ function App() {
                                 }
                             />
                         </Route>
+
+                        <Route
+                            path="/type"
+                            element={
+                                <AuthorizeRoute>
+                                    <Type />
+                                </AuthorizeRoute>
+                            }
+                        />
+
+                        <Route
+                            path="/brand"
+                            element={
+                                <AuthorizeRoute>
+                                    <Brand />
+                                </AuthorizeRoute>
+                            }
+                        />
                     </Route>
                 </Routes>
             </BrowserRouter>
