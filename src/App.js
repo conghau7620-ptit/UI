@@ -7,10 +7,13 @@ import List from "./pages/list";
 import Single from "./pages/single";
 import New from "./pages/new";
 import NewUser from "./pages/new/NewUser";
-import AuthorizeRoute from "./authorizeRoute";
 import Type from "./pages/type";
 import Brand from "./pages/brand";
+import Staff from "./pages/staff";
 import { DarkModeContext } from "./context/darkModeContext";
+
+import AdminRoute from "./adminRoute";
+import AuthorizeRoute from "./authorizeRoute";
 
 import { productInputs } from "./formSource";
 import "./style/dark.scss";
@@ -59,6 +62,18 @@ function App() {
                                     <AuthorizeRoute>
                                         <NewUser />
                                     </AuthorizeRoute>
+                                }
+                            />
+                        </Route>
+                        <Route path="/staff">
+                            <Route
+                                index
+                                element={
+                                    <AdminRoute>
+                                        <AuthorizeRoute>
+                                            <Staff />
+                                        </AuthorizeRoute>
+                                    </AdminRoute>
                                 }
                             />
                         </Route>

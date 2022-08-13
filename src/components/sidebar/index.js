@@ -15,10 +15,13 @@ import BadgeIcon from "@mui/icons-material/Badge";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import AuthContext from "../../context/authProvider";
 
 import "./style.scss";
 const Sidebar = () => {
     const { dispatch } = useContext(DarkModeContext);
+    const { auth } = useContext(AuthContext);
+
     return (
         <div className="sidebar">
             <div className="top">
@@ -41,12 +44,14 @@ const Sidebar = () => {
                             <span>User</span>
                         </li>
                     </Link>
-                    <Link to="/staff" style={{ textDecoration: "none" }}>
-                        <li>
-                            <PersonOutlineIcon className="icon" />
-                            <span>Staff</span>
-                        </li>
-                    </Link>
+                    {auth?.roleId === 1 ? (
+                        <Link to="/staff" style={{ textDecoration: "none" }}>
+                            <li>
+                                <PersonOutlineIcon className="icon" />
+                                <span>Staff</span>
+                            </li>
+                        </Link>
+                    ) : null}
                     <Link to="/products" style={{ textDecoration: "none" }}>
                         <li>
                             <StoreIcon className="icon" />

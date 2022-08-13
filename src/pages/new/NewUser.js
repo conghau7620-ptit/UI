@@ -31,7 +31,7 @@ const NewUser = () => {
 
         try {
             await createUser(formData);
-            toast.success("Create Successfully");
+            toast.success("Thêm mơi thành công");
             setFile("");
             setUsername("");
             setPassword("");
