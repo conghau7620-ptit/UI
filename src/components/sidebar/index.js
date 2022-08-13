@@ -16,12 +16,19 @@ import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 import AuthContext from "../../context/authProvider";
+import { removeItem } from "../../common/storage/local";
+import { useNavigate } from "react-router-dom";
 
 import "./style.scss";
 const Sidebar = () => {
     const { dispatch } = useContext(DarkModeContext);
     const { auth } = useContext(AuthContext);
+    const navigate = useNavigate();
 
+    const handleLogout = () => {
+        removeItem("TOKEN");
+        return navigate("/login");
+    };
     return (
         <div className="sidebar">
             <div className="top">
@@ -70,10 +77,6 @@ const Sidebar = () => {
                             <span>Brand</span>
                         </li>
                     </Link>
-                    <li>
-                        <LocalShippingIcon className="icon" />
-                        <span>Delivery</span>
-                    </li>
                     <p className="title">USEFUL</p>
                     <li>
                         <InsertChartIcon className="icon" />
@@ -103,7 +106,7 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <ExitToAppIcon className="icon" />
-                        <span>Logout</span>
+                        <span onClick={handleLogout}>Logout</span>
                     </li>
                 </ul>
             </div>
