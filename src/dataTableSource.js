@@ -2,7 +2,7 @@ export const userColumns = [
     { field: "id", headerName: "ID", width: 70 },
     {
         field: "name",
-        headerName: "Name",
+        headerName: "Tên",
         width: 230,
         renderCell: (params) => {
             return (
@@ -43,17 +43,17 @@ export const userColumns = [
     },
     {
         field: "address",
-        headerName: "Address",
+        headerName: "Địa Chỉ",
         width: 300,
     },
     {
         field: "phone",
-        headerName: "Phone",
+        headerName: "Số Điện Thoại",
         width: 200,
     },
     {
         field: "active",
-        headerName: "Active",
+        headerName: "Hoạt Động",
         width: 100,
         renderCell: (params) => {
             return (
@@ -70,13 +70,13 @@ export const typeColumn = [
 
     {
         field: "name",
-        headerName: "Name",
+        headerName: "Tên",
         width: 100,
     },
 
     {
         field: "active",
-        headerName: "Active",
+        headerName: "Hoạt Động",
         width: 100,
         renderCell: (params) => {
             return (
@@ -93,13 +93,13 @@ export const brandColumn = [
 
     {
         field: "name",
-        headerName: "Name",
+        headerName: "Tên",
         width: 100,
     },
 
     {
         field: "active",
-        headerName: "Active",
+        headerName: "Hoạt Động",
         width: 100,
         renderCell: (params) => {
             return (
@@ -115,17 +115,14 @@ export const productsColumn = [
     { field: "id", headerName: "ID", width: 70 },
     {
         field: "name",
-        headerName: "Name",
+        headerName: "Tên",
         width: 300,
         renderCell: (params) => {
             return (
                 <div className="cellWithImg">
                     <img
                         className="cellImg"
-                        src={
-                            params.row.imageUrls[0] ||
-                            "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                        }
+                        src={params.row.imageUrls[0]}
                         alt="avatar"
                     />
                     {params.row.name}
@@ -135,13 +132,13 @@ export const productsColumn = [
     },
     {
         field: "description",
-        headerName: "Description",
+        headerName: "Mô Tả",
         width: 500,
     },
 
     {
         field: "price",
-        headerName: "Price",
+        headerName: "Giá",
         width: 200,
         renderCell: (params) => {
             return (
@@ -156,28 +153,28 @@ export const productsColumn = [
     },
     {
         field: "quantity",
-        headerName: "Quantity",
+        headerName: "Số Lượng",
         width: 100,
     },
     {
         field: "discount",
-        headerName: "Discount",
+        headerName: "Giảm Giá",
         width: 100,
     },
     {
         field: "type",
-        headerName: "Type",
+        headerName: "Danh Mục",
         width: 100,
     },
     {
         field: "brand",
-        headerName: "Brand",
+        headerName: "Thương Hiệu",
         width: 100,
     },
 
     {
         field: "active",
-        headerName: "Active",
+        headerName: "Hoạt Động",
         width: 100,
         renderCell: (params) => {
             return (

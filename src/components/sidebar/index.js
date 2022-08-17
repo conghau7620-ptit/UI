@@ -33,92 +33,61 @@ const Sidebar = () => {
         <div className="sidebar">
             <div className="top">
                 <Link to="/" style={{ textDecoration: "none" }}>
-                    <span className="logo">Cong Hau Shop</span>
+                    <span className="logo">Be Shop</span>
                 </Link>
             </div>
             <hr />
             <div className="center">
                 <ul>
-                    <p className="title">MAIN</p>
-                    <li>
-                        <DashboardIcon className="icon" />
-                        <span>Dashboard</span>
-                    </li>
-                    <p className="title">LISTS</p>
+                    <Link to="/" style={{ textDecoration: "none" }}>
+                        <li>
+                            <DashboardIcon className="icon" />
+                            <span>Dashboard</span>
+                        </li>
+                    </Link>
+                    <p className="title">Quản Lý</p>
                     <Link to="/users" style={{ textDecoration: "none" }}>
                         <li>
                             <PersonOutlineIcon className="icon" />
-                            <span>User</span>
+                            <span>Khách Hàng</span>
                         </li>
                     </Link>
                     {auth?.roleId === 1 ? (
                         <Link to="/staff" style={{ textDecoration: "none" }}>
                             <li>
                                 <PersonOutlineIcon className="icon" />
-                                <span>Staff</span>
+                                <span>Nhân Viên</span>
                             </li>
                         </Link>
                     ) : null}
                     <Link to="/products" style={{ textDecoration: "none" }}>
                         <li>
                             <StoreIcon className="icon" />
-                            <span>Products</span>
+                            <span>Sản Phẩm</span>
                         </li>
                     </Link>
                     <Link to="/type" style={{ textDecoration: "none" }}>
                         <li>
                             <CategoryIcon className="icon" />
-                            <span>Type</span>
+                            <span>Danh Mục</span>
                         </li>
                     </Link>
                     <Link to="/brand" style={{ textDecoration: "none" }}>
                         <li>
                             <BadgeIcon className="icon" />
-                            <span>Brand</span>
+                            <span>Thương Hiệu</span>
                         </li>
                     </Link>
-                    <p className="title">USEFUL</p>
-                    <li>
-                        <InsertChartIcon className="icon" />
-                        <span>Stats</span>
-                    </li>
-                    <li>
-                        <NotificationsNoneIcon className="icon" />
-                        <span>Notifications</span>
-                    </li>
-                    <p className="title">SERVICE</p>
-                    <li>
-                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                        <span>System Health</span>
-                    </li>
-                    <li>
-                        <PsychologyOutlinedIcon className="icon" />
-                        <span>Logs</span>
-                    </li>
-                    <li>
-                        <SettingsApplicationsIcon className="icon" />
-                        <span>Settings</span>
-                    </li>
-                    <p className="title">USER</p>
+                    <p className="title">Tài Khoản</p>
                     <li>
                         <AccountCircleOutlinedIcon className="icon" />
-                        <span>Profile</span>
+                        <span>Thông Tin Tài Khoản</span>
                     </li>
                     <li>
                         <ExitToAppIcon className="icon" />
-                        <span onClick={handleLogout}>Logout</span>
+                        <span onClick={handleLogout}>Đăng Xuât</span>
                     </li>
                 </ul>
-            </div>
-            <div className="bottom">
-                <div
-                    className="colorOption"
-                    onClick={() => dispatch({ type: "LIGHT" })}
-                ></div>
-                <div
-                    className="colorOption"
-                    onClick={() => dispatch({ type: "DARK" })}
-                ></div>
             </div>
         </div>
     );

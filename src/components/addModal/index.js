@@ -27,10 +27,10 @@ function AddModal({ title, isOpen, setIsOpen, handleAdd }) {
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <h2 id="parent-modal-title">Add {title}</h2>
+                <h2 id="parent-modal-title">Thêm {title}</h2>
                 <form>
                     <div className="formInput">
-                        <label>Name</label>
+                        <label>Tên</label>
                         <input
                             type="text"
                             required
@@ -39,13 +39,13 @@ function AddModal({ title, isOpen, setIsOpen, handleAdd }) {
                         />
                     </div>
                     <div className="formInput">
-                        <label>Active</label>
+                        <label>Hoạt Động</label>
                         <select
                             onChange={(e) => setActive(e.target.value)}
                             value={active}
                         >
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
+                            <option value="1">Có</option>
+                            <option value="0">Không</option>
                         </select>
                     </div>
                     <button
@@ -54,7 +54,7 @@ function AddModal({ title, isOpen, setIsOpen, handleAdd }) {
                             handleAdd(name, Boolean(Number(active)));
                         }}
                     >
-                        Send
+                        Tạo
                     </button>
                 </form>
             </Box>

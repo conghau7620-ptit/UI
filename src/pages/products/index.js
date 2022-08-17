@@ -43,7 +43,7 @@ const Product = () => {
     const actionColumn = [
         {
             field: "action",
-            headerName: "Action",
+            headerName: "Hành Động",
             width: 200,
             renderCell: (params) => {
                 return (
@@ -59,14 +59,14 @@ const Product = () => {
                                 className="deleteButton"
                                 onClick={() => handleUnActive(params.row.id)}
                             >
-                                Unactive
+                                Tắt Hoạt Động
                             </div>
                         ) : (
                             <div
                                 className="activeButton"
                                 onClick={() => handleActive(params.row.id)}
                             >
-                                Active
+                                Bật Hoạt Động
                             </div>
                         )}
                     </div>
@@ -81,9 +81,9 @@ const Product = () => {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        Add New Product
-                        <Link to="/users/new" className="link">
-                            Add New
+                        <p></p>
+                        <Link to="/products/new" className="link">
+                            Thêm Mới
                         </Link>
                     </div>
                     <DataGrid

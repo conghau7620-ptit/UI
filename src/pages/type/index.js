@@ -58,7 +58,7 @@ function Type() {
     const actionColumn = [
         {
             field: "action",
-            headerName: "Action",
+            headerName: "Hành Động",
             width: 200,
             renderCell: (params) => {
                 return (
@@ -67,21 +67,21 @@ function Type() {
                             className="viewButton"
                             onClick={() => setIsEditOpen(true)}
                         >
-                            Edit
+                            Sửa
                         </div>
                         {params.row.active ? (
                             <div
                                 className="deleteButton"
                                 onClick={() => handleUnactive(params.row.id)}
                             >
-                                Unactive
+                                Tắt Hoạt Động
                             </div>
                         ) : (
                             <div
                                 className="activeButton"
                                 onClick={() => handleAcive(params.row.id)}
                             >
-                                Active
+                                Bật Hoạt Động
                             </div>
                         )}
                     </div>
@@ -97,12 +97,12 @@ function Type() {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        Add New Type
+                        <p></p>
                         <button
                             className="link"
                             onClick={() => setIsOpen(true)}
                         >
-                            Add New
+                            Tạo Mới
                         </button>
                     </div>
                     <DataGrid
@@ -115,7 +115,7 @@ function Type() {
                 </div>
             </div>
             <AddModal
-                title="Type"
+                title="Danh Mục"
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
                 handleAdd={handleAddType}

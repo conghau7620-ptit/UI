@@ -23,3 +23,14 @@ export const changeStatusProduct = async (data) => {
     });
     return response;
 };
+
+export const createProduct = async (data) => {
+    const url = "/product";
+    const response = await axiosClient.post(url, data, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${JSON.parse(getItem("TOKEN")).token}`,
+        },
+    });
+    return response;
+};

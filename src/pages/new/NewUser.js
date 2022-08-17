@@ -31,7 +31,7 @@ const NewUser = () => {
 
         try {
             await createUser(formData);
-            toast.success("Thêm mơi thành công");
+            toast.success("Thêm mới thành công");
             setFile("");
             setUsername("");
             setPassword("");
@@ -45,13 +45,15 @@ const NewUser = () => {
         }
     };
 
+    console.log(file);
+
     return (
         <div className="new">
             <Sidebar />
             <div className="newContainer">
                 <Navbar />
                 <div className="top">
-                    <h1>Add New User</h1>
+                    <h1>Thêm người dùng</h1>
                 </div>
                 <div className="bottom">
                     <div className="left">
@@ -71,7 +73,7 @@ const NewUser = () => {
                         >
                             <div className="formInput">
                                 <label htmlFor="file">
-                                    Image:{" "}
+                                    Hình ảnh:{" "}
                                     <DriveFolderUploadOutlinedIcon className="icon" />
                                 </label>
                                 <input
@@ -83,7 +85,7 @@ const NewUser = () => {
                             </div>
 
                             <div className="formInput">
-                                <label>UserName</label>
+                                <label>Tên Đăng Nhập</label>
                                 <input
                                     type="text"
                                     placeholder="john_doe"
@@ -96,7 +98,7 @@ const NewUser = () => {
                             </div>
 
                             <div className="formInput">
-                                <label>Password</label>
+                                <label>Mật Khẩu</label>
                                 <input
                                     type="password"
                                     required
@@ -110,7 +112,9 @@ const NewUser = () => {
                             <div className="formInput">
                                 <label>Access Level</label>
                                 <select
-                                    onChange={(e) => setRoleId(e.target.value)}
+                                    onChange={(e) =>
+                                        setRoleId(Number(e.target.value))
+                                    }
                                     value={roleId}
                                 >
                                     <option value="1">Admin</option>
@@ -120,7 +124,7 @@ const NewUser = () => {
                             </div>
 
                             <div className="formInput">
-                                <label>Name</label>
+                                <label>Tên</label>
                                 <input
                                     type="text"
                                     required
@@ -130,7 +134,7 @@ const NewUser = () => {
                             </div>
 
                             <div className="formInput">
-                                <label>Address</label>
+                                <label>Địa Chỉ</label>
                                 <input
                                     type="text"
                                     placeholder="Elton St. 216 NewYork"
@@ -152,7 +156,7 @@ const NewUser = () => {
                             </div>
 
                             <div className="formInput">
-                                <label>Phone</label>
+                                <label>Số Điện Thoại</label>
                                 <input
                                     type="text"
                                     placeholder="+1 234 567 89"
@@ -161,7 +165,7 @@ const NewUser = () => {
                                     onChange={(e) => setPhone(e.target.value)}
                                 />
                             </div>
-                            <button>Send</button>
+                            <button>Tạo</button>
                         </form>
                     </div>
                 </div>

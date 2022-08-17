@@ -1,5 +1,6 @@
 import axiosClient from "./axiosClient";
 import { getItem } from "../common/storage";
+
 export const getAllBrand = async (params) => {
     const url = "/brand";
     const response = await axiosClient({
@@ -10,6 +11,12 @@ export const getAllBrand = async (params) => {
         },
         params: params,
     });
+    return response;
+};
+
+export const getAllBrandActive = async () => {
+    const url = "/brand/active";
+    const response = axiosClient.get(url);
     return response;
 };
 

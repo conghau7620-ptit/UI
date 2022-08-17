@@ -37,7 +37,7 @@ const Datatable = () => {
     const actionColumn = [
         {
             field: "action",
-            headerName: "Action",
+            headerName: "Hành Động",
             width: 200,
             renderCell: (params) => {
                 return (
@@ -46,21 +46,21 @@ const Datatable = () => {
                             to={`/users/${params.row.id}`}
                             style={{ textDecoration: "none" }}
                         >
-                            <div className="viewButton">View</div>
+                            <div className="viewButton">Xem</div>
                         </Link>
                         {params.row.active ? (
                             <div
                                 className="deleteButton"
                                 onClick={() => handleUnActive(params.row.id)}
                             >
-                                Unactive
+                                Tắt Hoạt Động
                             </div>
                         ) : (
                             <div
                                 className="activeButton"
                                 onClick={() => handleActive(params.row.id)}
                             >
-                                Active
+                                Bật Hoạt Động
                             </div>
                         )}
                     </div>
@@ -71,9 +71,9 @@ const Datatable = () => {
     return (
         <div className="datatable">
             <div className="datatableTitle">
-                Add New User
+                <p></p>
                 <Link to="/users/new" className="link">
-                    Add New
+                    Thêm Mới
                 </Link>
             </div>
             <DataGrid

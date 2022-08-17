@@ -61,7 +61,7 @@ function Brand() {
     const actionColumn = [
         {
             field: "action",
-            headerName: "Action",
+            headerName: "Hành Động",
             width: 200,
             renderCell: (params) => {
                 return (
@@ -70,21 +70,21 @@ function Brand() {
                             to="/users/test"
                             style={{ textDecoration: "none" }}
                         >
-                            <div className="viewButton">Edit</div>
+                            <div className="viewButton">Sửa</div>
                         </Link>
                         {params.row.active ? (
                             <div
                                 className="deleteButton"
                                 onClick={() => handleUnactive(params.row.id)}
                             >
-                                Unactive
+                                Tắt Hoạt Động
                             </div>
                         ) : (
                             <div
                                 className="activeButton"
                                 onClick={() => handleAcive(params.row.id)}
                             >
-                                Active
+                                Bật Hoạt Động
                             </div>
                         )}
                     </div>
@@ -99,12 +99,12 @@ function Brand() {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        Add New Brand
+                        <p></p>
                         <button
                             className="link"
                             onClick={() => setIsOpen(true)}
                         >
-                            Add New
+                            Tạo Mới
                         </button>
                     </div>
                     <DataGrid
@@ -117,7 +117,7 @@ function Brand() {
                 </div>
             </div>
             <AddModal
-                title="Brand"
+                title="Thương Hiệu"
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
                 handleAdd={handleAddBrand}

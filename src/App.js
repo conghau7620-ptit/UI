@@ -5,8 +5,8 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import List from "./pages/list";
 import Single from "./pages/single";
-import New from "./pages/new";
 import NewUser from "./pages/new/NewUser";
+import NewProduct from "./pages/new/NewProduct";
 import Type from "./pages/type";
 import Brand from "./pages/brand";
 import Staff from "./pages/staff";
@@ -15,7 +15,6 @@ import { DarkModeContext } from "./context/darkModeContext";
 import AdminRoute from "./adminRoute";
 import AuthorizeRoute from "./authorizeRoute";
 
-import { productInputs } from "./formSource";
 import "./style/dark.scss";
 import Product from "./pages/products";
 import { ToastContainer } from "react-toastify";
@@ -86,22 +85,19 @@ function App() {
                                     </AuthorizeRoute>
                                 }
                             />
-                            <Route
+                            {/* <Route
                                 path=":productId"
                                 element={
                                     <AuthorizeRoute>
                                         <Single />
                                     </AuthorizeRoute>
                                 }
-                            />
+                            /> */}
                             <Route
                                 path="new"
                                 element={
                                     <AuthorizeRoute>
-                                        <New
-                                            inputs={productInputs}
-                                            title="Add New Product"
-                                        />
+                                        <NewProduct />
                                     </AuthorizeRoute>
                                 }
                             />

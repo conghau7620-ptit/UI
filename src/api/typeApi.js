@@ -14,6 +14,12 @@ export const getAllType = async (params) => {
     return response;
 };
 
+export const getAllTypeActive = async () => {
+    const url = "/type/active";
+    const response = await axiosClient.get(url);
+    return response;
+};
+
 export const changeStatusType = async (data) => {
     const url = "type/active";
     const response = await axiosClient.put(url, data, {
