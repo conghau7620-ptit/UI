@@ -35,7 +35,16 @@ const ProductDetail = () => {
                 console.log(err);
             }
         })();
-    }, [productId]);
+    }, [
+        name,
+        description,
+        price,
+        quantity,
+        typeId,
+        brandId,
+        discount,
+        productId,
+    ]);
 
     useEffect(() => {
         (async () => {
@@ -69,11 +78,7 @@ const ProductDetail = () => {
             active: productDetail.active,
         };
         try {
-            const response = await updateProduct(dataUpdate);
-            setProductDetail({
-                ...response.data,
-                imageUrls: productDetail.imageUrls,
-            });
+            /*const response =*/ await updateProduct(dataUpdate);
             toast.success("Cập nhật thành công");
             setName("");
             setDescription("");
