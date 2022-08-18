@@ -10,6 +10,7 @@ import NewProduct from "./pages/new/NewProduct";
 import Type from "./pages/type";
 import Brand from "./pages/brand";
 import Staff from "./pages/staff";
+import ProductDetail from "./pages/products/ProductDetail";
 import { DarkModeContext } from "./context/darkModeContext";
 
 import AdminRoute from "./adminRoute";
@@ -85,14 +86,14 @@ function App() {
                                     </AuthorizeRoute>
                                 }
                             />
-                            {/* <Route
+                            <Route
                                 path=":productId"
                                 element={
                                     <AuthorizeRoute>
-                                        <Single />
+                                        <ProductDetail />
                                     </AuthorizeRoute>
                                 }
-                            /> */}
+                            />
                             <Route
                                 path="new"
                                 element={

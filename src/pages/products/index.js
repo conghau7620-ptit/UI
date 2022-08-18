@@ -52,7 +52,7 @@ const Product = () => {
                             to={`/products/${params.row.id}`}
                             style={{ textDecoration: "none" }}
                         >
-                            <div className="viewButton">View</div>
+                            <div className="viewButton">Xem</div>
                         </Link>
                         {params.row.active ? (
                             <div

@@ -7,6 +7,7 @@ import { getAllTypeActive } from "../../api/typeApi";
 import { getAllBrandActive } from "../../api/brandApi";
 import { createProduct } from "../../api/productApi";
 import { toast } from "react-toastify";
+
 const NewProduct = () => {
     const [typeList, setTypeList] = useState([]);
     const [brandList, setBrandList] = useState([]);

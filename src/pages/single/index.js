@@ -23,8 +23,6 @@ const Single = () => {
         getDetailUser();
     }, []);
 
-    console.log(userDetail);
-
     return (
         <div className="single">
             <Sidebar />

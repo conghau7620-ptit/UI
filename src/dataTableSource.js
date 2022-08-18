@@ -58,7 +58,7 @@ export const userColumns = [
         renderCell: (params) => {
             return (
                 <div className={`cellWithStatus ${params.row.active}`}>
-                    {params.row.active ? "Yes" : "No"}
+                    {params.row.active ? "Có" : "Không"}
                 </div>
             );
         },
@@ -71,7 +71,7 @@ export const typeColumn = [
     {
         field: "name",
         headerName: "Tên",
-        width: 100,
+        width: 200,
     },
 
     {
@@ -81,7 +81,7 @@ export const typeColumn = [
         renderCell: (params) => {
             return (
                 <div className={`cellWithStatus ${params.row.active}`}>
-                    {params.row.active ? "Yes" : "No"}
+                    {params.row.active ? "Có" : "Không"}
                 </div>
             );
         },
@@ -94,7 +94,7 @@ export const brandColumn = [
     {
         field: "name",
         headerName: "Tên",
-        width: 100,
+        width: 200,
     },
 
     {
@@ -104,7 +104,7 @@ export const brandColumn = [
         renderCell: (params) => {
             return (
                 <div className={`cellWithStatus ${params.row.active}`}>
-                    {params.row.active ? "Yes" : "No"}
+                    {params.row.active ? "Có" : "Không"}
                 </div>
             );
         },
@@ -179,7 +179,7 @@ export const productsColumn = [
         renderCell: (params) => {
             return (
                 <div className={`cellWithStatus ${params.row.active}`}>
-                    {params.row.active ? "Yes" : "No"}
+                    {params.row.active ? "Có" : "Không"}
                 </div>
             );
         },
