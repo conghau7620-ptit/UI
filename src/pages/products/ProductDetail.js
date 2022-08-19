@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import Sidebar from "../../components/sidebar";
 import Navbar from "../../components/navbar";
@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 
 const ProductDetail = () => {
     const { productId } = useParams();
+    const navigate = useNavigate();
 
     const [typeList, setTypeList] = useState([]);
     const [brandList, setBrandList] = useState([]);
@@ -79,7 +80,6 @@ const ProductDetail = () => {
         };
         try {
             /*const response =*/ await updateProduct(dataUpdate);
-            toast.success("Cập nhật thành công");
             setName("");
             setDescription("");
             setPrice("");
@@ -87,6 +87,7 @@ const ProductDetail = () => {
             setBrandId("");
             setTypeId("");
             setDiscount("");
+            navigate(-1);
         } catch (err) {
             console.log(err);
         }

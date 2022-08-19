@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Sidebar from "../../components/sidebar";
 import Navbar from "../../components/navbar";
@@ -9,6 +10,8 @@ import { createProduct } from "../../api/productApi";
 import { toast } from "react-toastify";
 
 const NewProduct = () => {
+    const navigate = useNavigate();
+
     const [typeList, setTypeList] = useState([]);
     const [brandList, setBrandList] = useState([]);
 
@@ -50,7 +53,6 @@ const NewProduct = () => {
 
         try {
             await createProduct(formData);
-            toast.success("Thêm mới thành công");
             setFiles([]);
             setName("");
             setDescription("");
@@ -59,6 +61,7 @@ const NewProduct = () => {
             setBrandId("");
             setTypeId("");
             setDiscount("");
+            navigate(-1);
         } catch (err) {
             console.log(err);
         }
