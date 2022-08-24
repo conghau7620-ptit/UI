@@ -97,7 +97,7 @@ function Type() {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        <p></p>
+                        <p>Danh Mục</p>
                         <button
                             className="link"
                             onClick={() => setIsOpen(true)}

@@ -90,7 +90,7 @@ const Staff = () => {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        <p></p>
+                        <p>Nhân Viên</p>
                         <Link to="/users/new" className="link">
                             Thêm Mới
                         </Link>

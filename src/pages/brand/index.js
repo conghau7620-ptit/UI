@@ -99,7 +99,7 @@ function Brand() {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        <p></p>
+                        <p>Thương Hiệu</p>
                         <button
                             className="link"
                             onClick={() => setIsOpen(true)}

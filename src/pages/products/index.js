@@ -81,7 +81,7 @@ const Product = () => {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        <p></p>
+                        <p>Sản Phẩm</p>
                         <Link to="/products/new" className="link">
                             Thêm Mới
                         </Link>

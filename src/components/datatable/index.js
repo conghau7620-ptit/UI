@@ -71,7 +71,7 @@ const Datatable = () => {
     return (
         <div className="datatable">
             <div className="datatableTitle">
-                <p></p>
+                <p>Khách Hàng</p>
                 <Link to="/users/new" className="link">
                     Thêm Mới
                 </Link>

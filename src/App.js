@@ -11,6 +11,7 @@ import Type from "./pages/type";
 import Brand from "./pages/brand";
 import Staff from "./pages/staff";
 import ProductDetail from "./pages/products/ProductDetail";
+import Order from "./pages/order";
 import { DarkModeContext } from "./context/darkModeContext";
 
 import AdminRoute from "./adminRoute";
@@ -118,6 +119,14 @@ function App() {
                             element={
                                 <AuthorizeRoute>
                                     <Brand />
+                                </AuthorizeRoute>
+                            }
+                        />
+                        <Route
+                            path="/orders"
+                            element={
+                                <AuthorizeRoute>
+                                    <Order />
                                 </AuthorizeRoute>
                             }
                         />
