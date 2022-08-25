@@ -121,7 +121,7 @@ function Type() {
                 handleAdd={handleAddType}
             />
             <EditModal
-                title="Type"
+                title="Danh Mục"
                 isOpen={isEditOpen}
                 setIsOpen={setIsEditOpen}
             />

@@ -26,10 +26,10 @@ function AddModal({ title, isOpen, setIsOpen, handleAdd }) {
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                <h2 id="parent-modal-title">Edit {title}</h2>
+                <h2 id="parent-modal-title">Sửa {title}</h2>
                 <form>
                     <div className="formInput">
-                        <label>Name</label>
+                        <label>Tên</label>
                         <input
                             type="text"
                             required
@@ -37,7 +37,7 @@ function AddModal({ title, isOpen, setIsOpen, handleAdd }) {
                             onChange={(e) => setName(e.target.value)}
                         />
                     </div>
-                    <button>Send</button>
+                    <button>Gửi</button>
                 </form>
             </Box>
         </Modal>

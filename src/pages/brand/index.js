@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar";
 import Navbar from "../../components/navbar";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
+import EditModal from "../../components/editModal";
 
 import {
     getAllBrand,
@@ -15,6 +16,7 @@ import AddModal from "../../components/addModal";
 function Brand() {
     const [data, setData] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+    const [isEditOpen, setIsEditOpen] = useState(false);
 
     useEffect(() => {
         const getBrandDetail = async () => {
@@ -66,12 +68,12 @@ function Brand() {
             renderCell: (params) => {
                 return (
                     <div className="cellAction">
-                        <Link
-                            to="/users/test"
-                            style={{ textDecoration: "none" }}
+                        <div
+                            className="viewButton"
+                            onClick={() => setIsEditOpen(true)}
                         >
-                            <div className="viewButton">Sửa</div>
-                        </Link>
+                            Sửa
+                        </div>
                         {params.row.active ? (
                             <div
                                 className="deleteButton"
@@ -121,6 +123,11 @@ function Brand() {
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
                 handleAdd={handleAddBrand}
+            />
+            <EditModal
+                title="Thương Hiệu"
+                isOpen={isEditOpen}
+                setIsOpen={setIsEditOpen}
             />
         </div>
     );
