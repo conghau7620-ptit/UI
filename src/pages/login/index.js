@@ -40,7 +40,7 @@ const Login = () => {
             setUserName("");
             setPassword("");
             setSuccess(true);
-            navigate("/");
+            navigate("/users");
         } catch (err) {
             if (!err?.response) {
                 setErrMsg("No Server Response");

@@ -61,6 +61,7 @@ export default function CollapseTable() {
                         <TableCell align="center">Địa Chỉ</TableCell>
                         <TableCell align="center">Số Điện Thoại</TableCell>
                         <TableCell align="center">Tổng Đơn Hàng</TableCell>
+                        <TableCell align="center">Tên Nhân Viên</TableCell>
                         <TableCell align="center">Trạng Thái</TableCell>
                         <TableCell align="center"></TableCell>
                     </TableRow>
@@ -135,6 +136,9 @@ export default function CollapseTable() {
                                     style: "currency",
                                     currency: "VND",
                                 })}
+                            </TableCell>
+                            <TableCell align="center">
+                                {row.staffName}
                             </TableCell>
                             <TableCell align="center">{row.status}</TableCell>
                             <TableCell align="center">

@@ -39,12 +39,12 @@ const Sidebar = () => {
             <hr />
             <div className="center">
                 <ul>
-                    <Link to="/" style={{ textDecoration: "none" }}>
+                    {/* <Link to="/" style={{ textDecoration: "none" }}>
                         <li>
                             <DashboardIcon className="icon" />
                             <span>Dashboard</span>
                         </li>
-                    </Link>
+                    </Link> */}
                     <p className="title">Quản Lý</p>
                     <Link to="/users" style={{ textDecoration: "none" }}>
                         <li>

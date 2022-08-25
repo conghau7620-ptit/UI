@@ -4,11 +4,18 @@ import Navbar from "../../components/navbar";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { typeColumn } from "../../dataTableSource";
-import { getAllType, changeStatusType, createType } from "../../api/typeApi";
+import {
+    getAllType,
+    getOneTypeById,
+    changeStatusType,
+    createType,
+    changeType,
+} from "../../api/typeApi";
 import AddModal from "../../components/addModal";
 import EditModal from "../../components/editModal";
 
 function Type() {
+    const [editRowData, setEditRowData] = useState();
     const [data, setData] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [isEditOpen, setIsEditOpen] = useState(false);
@@ -55,6 +62,16 @@ function Type() {
         }
     };
 
+    const handleEditType = async (data) => {
+        try {
+            await changeType(data);
+            const response = await getAllType();
+            setData(response.data.types);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     const actionColumn = [
         {
             field: "action",
@@ -65,7 +82,13 @@ function Type() {
                     <div className="cellAction">
                         <div
                             className="viewButton"
-                            onClick={() => setIsEditOpen(true)}
+                            onClick={async () => {
+                                setIsEditOpen(true);
+                                const response = await getOneTypeById(
+                                    params.row.id
+                                );
+                                setEditRowData(response.data);
+                            }}
                         >
                             Sửa
                         </div>
@@ -124,6 +147,8 @@ function Type() {
                 title="Danh Mục"
                 isOpen={isEditOpen}
                 setIsOpen={setIsEditOpen}
+                onHandleEdit={handleEditType}
+                editRowData={editRowData}
             />
         </div>
     );

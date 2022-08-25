@@ -9,11 +9,14 @@ import {
     getAllBrand,
     changeStatusBrand,
     createBrand,
+    getOneBrandById,
+    changeBrand,
 } from "../../api/brandApi";
 import { brandColumn } from "../../dataTableSource";
 import AddModal from "../../components/addModal";
 
 function Brand() {
+    const [editRowData, setEditRowData] = useState();
     const [data, setData] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [isEditOpen, setIsEditOpen] = useState(false);
@@ -60,6 +63,17 @@ function Brand() {
             console.log(err);
         }
     };
+
+    const handleEditBrand = async (data) => {
+        try {
+            await changeBrand(data);
+            const response = await getAllBrand();
+            setData(response.data.brands);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     const actionColumn = [
         {
             field: "action",
@@ -70,7 +84,13 @@ function Brand() {
                     <div className="cellAction">
                         <div
                             className="viewButton"
-                            onClick={() => setIsEditOpen(true)}
+                            onClick={async () => {
+                                setIsEditOpen(true);
+                                const response = await getOneBrandById(
+                                    params.row.id
+                                );
+                                setEditRowData(response.data);
+                            }}
                         >
                             Sửa
                         </div>
@@ -128,6 +148,8 @@ function Brand() {
                 title="Thương Hiệu"
                 isOpen={isEditOpen}
                 setIsOpen={setIsEditOpen}
+                onHandleEdit={handleEditBrand}
+                editRowData={editRowData}
             />
         </div>
     );

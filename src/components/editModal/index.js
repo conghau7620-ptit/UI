@@ -1,10 +1,9 @@
 import { useState } from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
 
 import "./style.scss";
-function AddModal({ title, isOpen, setIsOpen, handleAdd }) {
+function AddModal({ title, isOpen, setIsOpen, onHandleEdit, editRowData }) {
     const [name, setName] = useState("");
 
     const style = {
@@ -34,10 +33,24 @@ function AddModal({ title, isOpen, setIsOpen, handleAdd }) {
                             type="text"
                             required
                             value={name}
+                            placeholder={editRowData?.name}
                             onChange={(e) => setName(e.target.value)}
                         />
                     </div>
-                    <button>Gửi</button>
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            onHandleEdit({
+                                id: editRowData.id,
+                                name: name || editRowData?.name,
+                                active: editRowData?.active,
+                            });
+                            setIsOpen(false);
+                            setName("");
+                        }}
+                    >
+                        Gửi
+                    </button>
                 </form>
             </Box>
         </Modal>

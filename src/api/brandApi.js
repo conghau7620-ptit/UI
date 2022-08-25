@@ -14,6 +14,12 @@ export const getAllBrand = async (params) => {
     return response;
 };
 
+export const getOneBrandById = async (id) => {
+    const url = `/brand/${id}`;
+    const response = await axiosClient.get(url);
+    return response;
+};
+
 export const getAllBrandActive = async () => {
     const url = "/brand/active";
     const response = axiosClient.get(url);
@@ -33,6 +39,16 @@ export const changeStatusBrand = async (data) => {
 export const createBrand = async (data) => {
     const url = "/brand";
     const response = await axiosClient.post(url, data, {
+        headers: {
+            Authorization: `Bearer ${JSON.parse(getItem("TOKEN")).token}`,
+        },
+    });
+    return response;
+};
+
+export const changeBrand = async (data) => {
+    const url = "/brand";
+    const response = await axiosClient.put(url, data, {
         headers: {
             Authorization: `Bearer ${JSON.parse(getItem("TOKEN")).token}`,
         },
