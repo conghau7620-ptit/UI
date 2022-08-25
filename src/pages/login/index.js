@@ -66,9 +66,9 @@ const Login = () => {
                     >
                         {errMsg}
                     </p>
-                    <h1>Sign In</h1>
+                    <h1>Đăng Nhập</h1>
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="username">Username:</label>
+                        <label htmlFor="username">Tên Đăng Nhập:</label>
                         <input
                             type="text"
                             id="username"
@@ -79,7 +79,7 @@ const Login = () => {
                             required
                         />
 
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="password">Mật Khẩu:</label>
                         <input
                             type="password"
                             id="password"
@@ -87,7 +87,7 @@ const Login = () => {
                             value={password}
                             required
                         />
-                        <button>Sign In</button>
+                        <button>Đăng Nhập</button>
                     </form>
                 </section>
             </div>
