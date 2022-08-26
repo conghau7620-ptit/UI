@@ -8,9 +8,8 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
-
 import AuthContext from "../../context/authProvider";
-import { getAllOrder, changeStatusOrder } from "../../api/orderApi";
+import { changeStatusOrder } from "../../api/orderApi";
 
 const ExpandableTableRow = ({ children, expandComponent, ...otherProps }) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -34,22 +33,8 @@ const ExpandableTableRow = ({ children, expandComponent, ...otherProps }) => {
     );
 };
 
-export default function CollapseTable() {
-    const [rows, setRows] = useState([]);
+export default function CollapseTable({ rowsData, getList }) {
     const { auth } = useContext(AuthContext);
-
-    const getOrderList = async () => {
-        try {
-            const response = await getAllOrder();
-            setRows(response.data);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-    useEffect(() => {
-        getOrderList();
-    }, []);
-
     return (
         <Paper>
             <Table aria-label="simple table">
@@ -85,7 +70,7 @@ export default function CollapseTable() {
                 </TableRow>
               </React.Fragment>
             ))} */}
-                    {rows.map((row) => (
+                    {rowsData.map((row) => (
                         <ExpandableTableRow
                             key={row.id}
                             expandComponent={
@@ -120,7 +105,9 @@ export default function CollapseTable() {
                                 {row.name}
                             </TableCell> */}
                             <TableCell align="center">
-                                {row.createdDate}
+                                {new Date(row.createdDate).toLocaleDateString(
+                                    "en-GB"
+                                )}
                             </TableCell>
                             <TableCell align="center">
                                 {row.customerName}
@@ -153,7 +140,7 @@ export default function CollapseTable() {
                                                         status: 2,
                                                         staffId: auth.id,
                                                     });
-                                                    await getOrderList();
+                                                    await getList();
                                                 } catch (err) {
                                                     console.log(err);
                                                 }
@@ -172,7 +159,7 @@ export default function CollapseTable() {
                                                         status: 3,
                                                         staffId: auth.id,
                                                     });
-                                                    await getOrderList();
+                                                    await getList();
                                                 } catch (err) {
                                                     console.log(err);
                                                 }
@@ -191,7 +178,7 @@ export default function CollapseTable() {
                                                         status: 4,
                                                         staffId: auth.id,
                                                     });
-                                                    await getOrderList();
+                                                    await getList();
                                                 } catch (err) {
                                                     console.log(err);
                                                 }

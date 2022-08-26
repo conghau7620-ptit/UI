@@ -22,3 +22,15 @@ export const changeStatusOrder = async (data) => {
     });
     return response;
 };
+
+export const getOrderByUserId = async (id) => {
+    const url = `/order/customer/${id}`;
+    const response = await axiosClient({
+        method: "get",
+        url: url,
+        headers: {
+            Authorization: `Bearer ${JSON.parse(getItem("TOKEN")).token}`,
+        },
+    });
+    return response;
+};

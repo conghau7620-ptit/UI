@@ -5,11 +5,14 @@ import Chart from "../../components/chart";
 import List from "../../components/table";
 import { useParams } from "react-router-dom";
 import { getUser } from "../../api/userAPI";
+import { getOrderByUserId } from "../../api/orderApi";
 import "./style.scss";
 
+import CollapseTable from "../order/CollapseTable";
 const Single = () => {
     let { userId } = useParams();
     const [userDetail, setUserDetail] = useState();
+    const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         const getDetailUser = async () => {
@@ -23,6 +26,17 @@ const Single = () => {
         getDetailUser();
     }, []);
 
+    const getOrders = async () => {
+        try {
+            const response = await getOrderByUserId(userId);
+            setOrders(response.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    useEffect(() => {
+        getOrders();
+    }, []);
     return (
         <div className="single">
             <Sidebar />
@@ -30,7 +44,7 @@ const Single = () => {
                 <Navbar />
                 <div className="top">
                     <div className="left">
-                        <h1 className="title">Information</h1>
+                        <h1 className="title">Thông tin</h1>
                         <div className="item">
                             <img
                                 src={
@@ -51,21 +65,23 @@ const Single = () => {
                                     </span>
                                 </div>
                                 <div className="detailItem">
-                                    <span className="itemKey">Phone:</span>
+                                    <span className="itemKey">
+                                        Số Điện Thoại:
+                                    </span>
                                     <span className="itemValue">
                                         {userDetail?.phone}
                                     </span>
                                 </div>
                                 <div className="detailItem">
-                                    <span className="itemKey">Address:</span>
+                                    <span className="itemKey">Địa Chỉ:</span>
                                     <span className="itemValue">
                                         {userDetail?.address}
                                     </span>
                                 </div>
                                 <div className="detailItem">
-                                    <span className="itemKey">Active:</span>
+                                    <span className="itemKey">Hoạt Động:</span>
                                     <span className="itemValue">
-                                        {userDetail?.active ? "Yes" : "No"}
+                                        {userDetail?.active ? "Còn" : "Không"}
                                     </span>
                                 </div>
                             </div>
@@ -74,8 +90,10 @@ const Single = () => {
                     <div className="right"></div>
                 </div>
                 <div className="bottom">
-                    <h1 className="title">Last Transactions</h1>
-                    <List />
+                    <h1 className="title">Đơn Hàng</h1>
+                    <div className="datatable">
+                        <CollapseTable rowsData={orders} getList={getOrders} />
+                    </div>
                 </div>
             </div>
         </div>
