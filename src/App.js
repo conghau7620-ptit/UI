@@ -57,14 +57,14 @@ function App() {
                                     </AuthorizeRoute>
                                 }
                             />
-                            {/* <Route
+                            <Route
                                 path="new"
                                 element={
                                     <AuthorizeRoute>
                                         <NewUser />
                                     </AuthorizeRoute>
                                 }
-                            /> */}
+                            />
                         </Route>
                         <Route path="/staff">
                             <Route
