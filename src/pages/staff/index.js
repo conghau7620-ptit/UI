@@ -57,12 +57,12 @@ const Staff = () => {
             renderCell: (params) => {
                 return (
                     <div className="cellAction">
-                        <Link
+                        {/* <Link
                             to={`/users/${params.row.id}`}
                             style={{ textDecoration: "none" }}
                         >
                             <div className="viewButton">Xem</div>
-                        </Link>
+                        </Link> */}
                         {params.row.active ? (
                             <div
                                 className="deleteButton"
