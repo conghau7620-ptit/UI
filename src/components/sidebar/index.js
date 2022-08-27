@@ -86,10 +86,10 @@ const Sidebar = () => {
                         </li>
                     </Link>
                     <p className="title">Tài Khoản</p>
-                    <li>
+                    {/* <li>
                         <AccountCircleOutlinedIcon className="icon" />
                         <span>Thông Tin Tài Khoản</span>
-                    </li>
+                    </li> */}
                     <li>
                         <ExitToAppIcon className="icon" />
                         <span onClick={handleLogout}>Đăng Xuât</span>

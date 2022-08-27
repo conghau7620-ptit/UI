@@ -117,9 +117,8 @@ const NewUser = () => {
                                     }
                                     value={roleId}
                                 >
-                                    <option value="1">Admin</option>
-                                    <option value="2">Staff</option>
-                                    <option value="3">Customer</option>
+                                    <option value="1">Quản Lý</option>
+                                    <option value="2">Nhân Viên</option>
                                 </select>
                             </div>
 
