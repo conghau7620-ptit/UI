@@ -19,18 +19,37 @@ function Type() {
     const [data, setData] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [isEditOpen, setIsEditOpen] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
+
+    const getTypeData = async () => {
+        try {
+            const response = await getAllType();
+            setData(response.data.types);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     useEffect(() => {
-        const getTypeData = async () => {
-            try {
-                const response = await getAllType();
-                setData(response.data.types);
-            } catch (err) {
-                console.log(err);
-            }
-        };
         getTypeData();
     }, [isOpen]);
+
+    useEffect(() => {
+        if (searchValue) {
+            const newData = data.filter((data) =>
+                data.name
+                    .toLowerCase()
+                    .split(" ")
+                    .join("")
+                    .includes(
+                        searchValue.toLowerCase().trim().split(" ").join("")
+                    )
+            );
+            setData(newData);
+        } else {
+            getTypeData();
+        }
+    }, [searchValue]);
 
     const handleAcive = async (id) => {
         try {
@@ -120,7 +139,13 @@ function Type() {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        <p>Danh Mục</p>
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Tìm Kiếm..."
+                                onChange={(e) => setSearchValue(e.target.value)}
+                            />
+                        </div>
                         <button
                             className="link"
                             onClick={() => setIsOpen(true)}

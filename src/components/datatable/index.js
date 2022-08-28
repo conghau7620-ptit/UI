@@ -3,11 +3,13 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns } from "../../dataTableSource";
 import { Link } from "react-router-dom";
 import { getAllUser, updateUser } from "../../api/userAPI";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 import "./style.scss";
 
 const Datatable = () => {
     const [data, setData] = useState([]);
+    const [searchValue, setSearchValue] = useState("");
 
     const handleUnActive = async (id) => {
         const user = data.find((user) => user.id === id);
@@ -25,14 +27,32 @@ const Datatable = () => {
         setData(response.data.userResponses);
     };
 
+    const getAllUserData = async () => {
+        const response = await getAllUser();
+        console.log(response.data);
+        setData(response.data.userResponses);
+    };
+
     useEffect(() => {
-        const getAllUserData = async () => {
-            const response = await getAllUser();
-            console.log(response.data);
-            setData(response.data.userResponses);
-        };
         getAllUserData();
     }, []);
+
+    useEffect(() => {
+        if (searchValue) {
+            const newUserList = data.filter((user) =>
+                user.name
+                    .toLowerCase()
+                    .split(" ")
+                    .join("")
+                    .includes(
+                        searchValue.toLowerCase().trim().split(" ").join("")
+                    )
+            );
+            setData(newUserList);
+        } else {
+            getAllUserData();
+        }
+    }, [searchValue]);
 
     const actionColumn = [
         {
@@ -71,7 +91,13 @@ const Datatable = () => {
     return (
         <div className="datatable">
             <div className="datatableTitle">
-                <p>Khách Hàng</p>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Tìm Kiếm..."
+                        onChange={(e) => setSearchValue(e.target.value)}
+                    />
+                </div>
                 {/* <Link to="/users/new" className="link">
                     Thêm Mới
                 </Link> */}

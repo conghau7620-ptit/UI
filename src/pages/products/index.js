@@ -10,7 +10,7 @@ import "./style.scss";
 
 const Product = () => {
     const [products, setProducts] = useState([]);
-
+    const [searchValue, setSearchValue] = useState("");
     const fetchProducts = async () => {
         try {
             const res = await getAllProduct();
@@ -22,6 +22,23 @@ const Product = () => {
     useEffect(() => {
         fetchProducts();
     }, []);
+
+    useEffect(() => {
+        if (searchValue) {
+            const newProducts = products.filter((pd) =>
+                pd.name
+                    .toLowerCase()
+                    .split(" ")
+                    .join("")
+                    .includes(
+                        searchValue.toLowerCase().trim().split(" ").join("")
+                    )
+            );
+            setProducts(newProducts);
+        } else {
+            fetchProducts();
+        }
+    }, [searchValue]);
 
     const handleUnActive = async (id) => {
         try {
@@ -81,7 +98,13 @@ const Product = () => {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        <p>Sản Phẩm</p>
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Tìm Kiếm..."
+                                onChange={(e) => setSearchValue(e.target.value)}
+                            />
+                        </div>
                         <Link to="/products/new" className="link">
                             Thêm Mới
                         </Link>

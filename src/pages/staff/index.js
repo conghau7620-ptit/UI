@@ -9,23 +9,41 @@ import { updateUser } from "../../api/userAPI";
 import AuthContext from "../../context/authProvider";
 const Staff = () => {
     const [staff, setStaff] = useState([]);
+    const [searchValue, setSearchValue] = useState("");
     const { auth } = useContext(AuthContext);
 
-    useEffect(() => {
-        const getAllStaffDetail = async () => {
-            try {
-                const response = await getAllStaff();
-                const filterStaff = response.data.userResponses.filter(
-                    (staff) => staff.id !== auth.id
-                );
-                setStaff(filterStaff);
-            } catch (err) {
-                console.log(err);
-            }
-        };
+    const getAllStaffDetail = async () => {
+        try {
+            const response = await getAllStaff();
+            const filterStaff = response.data.userResponses.filter(
+                (staff) => staff.id !== auth.id
+            );
+            setStaff(filterStaff);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
+    useEffect(() => {
         getAllStaffDetail();
     }, []);
+
+    useEffect(() => {
+        if (searchValue) {
+            const newStaffList = staff.filter((staff) =>
+                staff.name
+                    .toLowerCase()
+                    .split(" ")
+                    .join("")
+                    .includes(
+                        searchValue.toLowerCase().trim().split(" ").join("")
+                    )
+            );
+            setStaff(newStaffList);
+        } else {
+            getAllStaffDetail();
+        }
+    }, [searchValue]);
 
     const handleUnActive = async (id) => {
         const staffUpdate = staff.find((staff) => staff.id === id);
@@ -90,7 +108,13 @@ const Staff = () => {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        <p>Nhân Viên</p>
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Tìm Kiếm..."
+                                onChange={(e) => setSearchValue(e.target.value)}
+                            />
+                        </div>
                         <Link to="/users/new" className="link">
                             Thêm Mới
                         </Link>

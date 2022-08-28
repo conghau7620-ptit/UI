@@ -20,19 +20,37 @@ function Brand() {
     const [data, setData] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [isEditOpen, setIsEditOpen] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
+
+    const getBrandDetail = async () => {
+        try {
+            const response = await getAllBrand();
+            setData(response.data.brands);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     useEffect(() => {
-        const getBrandDetail = async () => {
-            try {
-                const response = await getAllBrand();
-                setData(response.data.brands);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-
         getBrandDetail();
     }, [isOpen]);
+
+    useEffect(() => {
+        if (searchValue) {
+            const newData = data.filter((data) =>
+                data.name
+                    .toLowerCase()
+                    .split(" ")
+                    .join("")
+                    .includes(
+                        searchValue.toLowerCase().trim().split(" ").join("")
+                    )
+            );
+            setData(newData);
+        } else {
+            getBrandDetail();
+        }
+    }, [searchValue]);
 
     const handleAcive = async (id) => {
         try {
@@ -121,7 +139,13 @@ function Brand() {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        <p>Thương Hiệu</p>
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Tìm Kiếm..."
+                                onChange={(e) => setSearchValue(e.target.value)}
+                            />
+                        </div>
                         <button
                             className="link"
                             onClick={() => setIsOpen(true)}
