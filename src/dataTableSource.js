@@ -28,10 +28,10 @@ export const userColumns = [
             return (
                 <div className={`cellWithStatus ${params.row.roleId}`}>
                     {params.row.roleId === 1
-                        ? "Admin"
+                        ? "Quản Lý"
                         : params.row.roleId === 2
-                        ? "Staff"
-                        : "Customer"}
+                        ? "Nhân Viên"
+                        : "Khách Hàng"}
                 </div>
             );
         },

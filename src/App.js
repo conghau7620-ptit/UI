@@ -10,6 +10,7 @@ import NewProduct from "./pages/new/NewProduct";
 import Type from "./pages/type";
 import Brand from "./pages/brand";
 import Staff from "./pages/staff";
+import EditStaff from "./pages/staff/EditStaff";
 import ProductDetail from "./pages/products/ProductDetail";
 import Order from "./pages/order";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -73,6 +74,16 @@ function App() {
                                     <AdminRoute>
                                         <AuthorizeRoute>
                                             <Staff />
+                                        </AuthorizeRoute>
+                                    </AdminRoute>
+                                }
+                            />
+                            <Route
+                                path=":staffId"
+                                element={
+                                    <AdminRoute>
+                                        <AuthorizeRoute>
+                                            <EditStaff />
                                         </AuthorizeRoute>
                                     </AdminRoute>
                                 }
