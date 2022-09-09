@@ -88,7 +88,6 @@ const NewUser = () => {
                                 <label>Tên Đăng Nhập</label>
                                 <input
                                     type="text"
-                                    placeholder="john_doe"
                                     required
                                     value={username}
                                     onChange={(e) =>
@@ -136,7 +135,6 @@ const NewUser = () => {
                                 <label>Địa Chỉ</label>
                                 <input
                                     type="text"
-                                    placeholder="Elton St. 216 NewYork"
                                     required
                                     value={address}
                                     onChange={(e) => setAddress(e.target.value)}
@@ -147,7 +145,6 @@ const NewUser = () => {
                                 <label>Email</label>
                                 <input
                                     type="mail"
-                                    placeholder="john_doe@gmail.com"
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -158,7 +155,6 @@ const NewUser = () => {
                                 <label>Số Điện Thoại</label>
                                 <input
                                     type="text"
-                                    placeholder="+1 234 567 89"
                                     required
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
